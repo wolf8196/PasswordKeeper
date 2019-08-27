@@ -1,0 +1,115 @@
+﻿<UserControl
+    x:Class="PasswordKeeper.Apps.Wpf.Features.Attachments.AttachmentsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:comp="clr-namespace:PasswordKeeper.Apps.Wpf.Components"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Helpers;assembly=PasswordKeeper.Apps.Wpf.Styling"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="540"
+    d:DesignWidth="292"
+    Focusable="True"
+    Loaded="AttachmentsView_Loaded"
+    mc:Ignorable="d">
+
+    <UserControl.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding BackButtonClick}" />
+    </UserControl.InputBindings>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="24*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+
+        <comp:BackButtonHeader
+            Grid.Row="0"
+            Command="{Binding BackButtonClick, Mode=OneWay}"
+            Text="{StaticResource Attachments}" />
+
+        <TextBlock
+            Grid.Row="1"
+            Style="{DynamicResource PasswordKeeperHeaderTextBlock}"
+            Text="{Binding AccountName, Mode=OneWay}"
+            ToolTip="{Binding AccountName, Mode=OneWay}" />
+
+        <Grid Grid.Row="2" AllowDrop="True">
+            <i:Interaction.Behaviors>
+                <helpers:FileOnlyDragHelper />
+            </i:Interaction.Behaviors>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DragEnter">
+                    <i:InvokeCommandAction Command="{Binding DragEnter, Mode=OneWay}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="DragLeave">
+                    <i:InvokeCommandAction Command="{Binding DragLeave, Mode=OneWay}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <ListBox
+                Grid.Row="2"
+                IsTextSearchCaseSensitive="False"
+                IsTextSearchEnabled="True"
+                ItemContainerStyle="{DynamicResource PasswordKeeperListBoxItemStyle}"
+                ItemsSource="{Binding Attachments, Mode=OneWay}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                SelectedItem="{Binding SelectedAttachment, Mode=TwoWay}">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <comp:FileDropArea
+                Grid.Row="0"
+                Grid.RowSpan="8"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                controls:VisibilityHelper.IsVisible="{Binding IsDragOver, Mode=OneWay}"
+                DropCommand="{Binding FileDrop, Mode=OneWay}" />
+        </Grid>
+
+        <Grid Grid.Row="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Command="{Binding ExtractButtonClick, Mode=OneWay}"
+                IsEnabled="{Binding IsAttachmentSelected, Mode=OneWay}"
+                IsTabStop="False"
+                Style="{DynamicResource PasswordKeeperButtonStyle}"
+                ToolTip="{DynamicResource ToolTip.ExtractAttachment}">
+                <Button.Content>
+                    <iconPack:PackIconMaterial Kind="FileExport" Style="{DynamicResource MaterialIconsLarge}" />
+                </Button.Content>
+            </Button>
+            <Button
+                Grid.Column="2"
+                Command="{Binding DeleteButtonClick, Mode=OneWay}"
+                IsEnabled="{Binding IsAttachmentSelected, Mode=OneWay}"
+                IsTabStop="False"
+                Style="{DynamicResource PasswordKeeperButtonStyle}"
+                ToolTip="{DynamicResource ToolTip.DeleteAttachment}">
+                <Button.Content>
+                    <iconPack:PackIconMaterial Kind="Delete" Style="{DynamicResource MaterialIconsLarge}" />
+                </Button.Content>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

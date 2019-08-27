@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="PasswordKeeper.Apps.Wpf.Features.LoadingIndicator.LoadingIndicatorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="540"
+    d:DesignWidth="292"
+    FocusVisualStyle="{x:Null}"
+    Focusable="True"
+    IsTabStop="False"
+    Loaded="LoadingIndicatorView_Loaded"
+    PreviewKeyDown="LoadingIndicatorView_PreviewKeyDown"
+    mc:Ignorable="d">
+
+    <Grid Background="#7FFFFFFF">
+        <controls:ProgressRing IsActive="True" IsTabStop="False" />
+    </Grid>
+</UserControl>

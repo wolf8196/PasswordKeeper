@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls">
+
+    <Style
+        x:Key="PasswordKeeperListBoxItemStyle"
+        BasedOn="{StaticResource {x:Type ListBoxItem}}"
+        TargetType="{x:Type ListBoxItem}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="controls:ItemHelper.SelectedBackgroundBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="Padding" Value="5,0,0,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource HeaderFontFamily}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="LabelUnderlineStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="TextDecorations" Value="Underline" />
+    </Style>
+
+    <Style x:Key="ViewFadeInStyle" TargetType="{x:Type UserControl}">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            BeginTime="0:0:0"
+                            Storyboard.TargetProperty="Opacity"
+                            From="0"
+                            To="1"
+                            Duration="0:0:0.2" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PasswordKeeperFlyout" TargetType="{x:Type controls:Flyout}">
+        <Setter Property="Position" Value="Left" />
+        <Setter Property="Width" Value="51" />
+        <Setter Property="ExternalCloseButton" Value="Left" />
+        <Setter Property="IsPinned" Value="False" />
+        <Setter Property="TitleVisibility" Value="Collapsed" />
+        <Setter Property="CloseButtonVisibility" Value="Collapsed" />
+        <Setter Property="Theme" Value="Dark" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Margin" Value="0,30,0,0" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperDashedRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Margin" Value="1,0,1,1" />
+        <Setter Property="Stroke" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="StrokeDashArray" Value="10" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <Style
+        x:Key="PasswordKeeperNumericUpDown"
+        BasedOn="{StaticResource {x:Type controls:NumericUpDown}}"
+        TargetType="{x:Type controls:NumericUpDown}">
+        <Setter Property="controls:ControlsHelper.FocusBorderBrush" Value="{DynamicResource AccentBaseColorBrush}" />
+        <Setter Property="controls:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource AccentColorBrush}" />
+    </Style>
+</ResourceDictionary>

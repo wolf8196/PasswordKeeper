@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Helpers"
+    xmlns:c="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Converters"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+
+    <Style
+        x:Key="PasswordKeeperComboBoxStyle"
+        BasedOn="{StaticResource {x:Type ComboBox}}"
+        TargetType="{x:Type ComboBox}">
+        <Setter Property="mah:ControlsHelper.FocusBorderBrush" Value="{DynamicResource AccentBaseColorBrush}" />
+        <Setter Property="mah:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Style.Resources>
+            <c:BrushToColorConverter x:Key="colorConverter" />
+            <b:BindingProxy x:Key="AccentColorBrush3Proxy" Data="{DynamicResource AccentColorBrush3}" />
+            <b:BindingProxy x:Key="AccentColorBrush4Proxy" Data="{DynamicResource AccentColorBrush4}" />
+            <SolidColorBrush x:Key="GrayBrush3" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="GrayBrush5" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="GrayBrush7" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="GrayBrush9" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>

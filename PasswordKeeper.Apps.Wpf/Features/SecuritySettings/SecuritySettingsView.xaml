@@ -1,0 +1,157 @@
+﻿<UserControl
+    x:Class="PasswordKeeper.Apps.Wpf.Features.SecuritySettings.SecuritySettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Converters;assembly=PasswordKeeper.Apps.Wpf.Styling"
+    xmlns:comp="clr-namespace:PasswordKeeper.Apps.Wpf.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="540"
+    d:DesignWidth="292"
+    Focusable="True"
+    Loaded="SecuritySettingsView_Loaded"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <c:EnumToDescriptionConverter x:Key="enumConverter" />
+    </UserControl.Resources>
+
+    <UserControl.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding ConfirmButtonClick}" />
+        <KeyBinding Key="Esc" Command="{Binding BackButtonClick}" />
+    </UserControl.InputBindings>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+
+        <comp:BackButtonHeader
+            Grid.Row="0"
+            Command="{Binding BackButtonClick}"
+            TabIndex="13"
+            Text="{StaticResource SecuritySettings}" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="14*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Content="{DynamicResource Label.EncryptionAlgorithm}"
+                Style="{DynamicResource PasswordKeeperInputLabelStyle}" />
+
+            <ComboBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsTabStop="False"
+                ItemsSource="{Binding EncryptionAlgs, Mode=OneWay}"
+                SelectedItem="{Binding SelectedEncryptionAlg, Mode=TwoWay}"
+                Style="{DynamicResource PasswordKeeperComboBoxStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource enumConverter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                Content="{DynamicResource Label.KeyTransformation}"
+                Style="{DynamicResource PasswordKeeperInputLabelStyle}" />
+
+            <ComboBox
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsTabStop="False"
+                ItemsSource="{Binding Kdfs, Mode=OneWay}"
+                SelectedItem="{Binding SelectedKdf, Mode=TwoWay}"
+                Style="{DynamicResource PasswordKeeperComboBoxStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource enumConverter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+        <StackPanel Grid.Row="2">
+            <ContentControl Content="{Binding KdfViewModel}" IsTabStop="False" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="21*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Content="{Binding Message, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource PasswordKeeperInputLabelStyle}" />
+
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding RunOneSecondSetupButtonClick, Mode=OneTime}"
+                    IsTabStop="False"
+                    Style="{DynamicResource PasswordKeeperButtonStyle}"
+                    ToolTip="{DynamicResource ToolTip.RunOneSecondSetup}">
+                    <Button.Content>
+                        <iconPack:PackIconModern
+                            Width="28"
+                            Height="28"
+                            Kind="Timer1" />
+                    </Button.Content>
+                </Button>
+
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding RunTestButtonClick, Mode=OneTime}"
+                    IsTabStop="False"
+                    Style="{DynamicResource PasswordKeeperButtonStyle}"
+                    ToolTip="{DynamicResource ToolTip.RunTest}">
+                    <Button.Content>
+                        <iconPack:PackIconMaterial
+                            Width="28"
+                            Height="28"
+                            Kind="TestTube" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <Button
+            Grid.Row="5"
+            Command="{Binding ConfirmButtonClick}"
+            IsTabStop="False"
+            Style="{DynamicResource PasswordKeeperButtonStyle}"
+            ToolTip="{DynamicResource ToolTip.ConfirmSecuritySettings}">
+            <Button.Content>
+                <iconPack:PackIconMaterial Kind="Check" Style="{DynamicResource MaterialIconsLarge}" />
+            </Button.Content>
+        </Button>
+    </Grid>
+</UserControl>

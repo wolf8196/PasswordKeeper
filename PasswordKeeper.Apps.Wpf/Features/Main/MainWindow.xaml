@@ -1,0 +1,134 @@
+﻿<controls:MetroWindow
+    x:Class="PasswordKeeper.Apps.Wpf.Features.Main.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c1="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Converters;assembly=PasswordKeeper.Apps.Wpf.Styling"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Helpers;assembly=PasswordKeeper.Apps.Wpf.Styling"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ni="http://www.hardcodet.net/taskbar"
+    Title="{DynamicResource Title}"
+    Width="300"
+    Height="572"
+    BorderBrush="{DynamicResource AccentColorBrush}"
+    BorderThickness="1"
+    Closing="MainWindow_Closing"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    Icon="..\..\password.keeper.ico"
+    IsTabStop="False"
+    ResizeMode="CanMinimize"
+    ShowIconOnTitleBar="True"
+    ShowTitleBar="True"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <i:Interaction.Behaviors>
+        <helpers:TopmostBindingHelper Value="{Binding AlwaysOnTop, Mode=OneWay}" />
+    </i:Interaction.Behaviors>
+
+    <Window.Resources>
+        <c1:NullToCollapsedConverter x:Key="converter" />
+    </Window.Resources>
+
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout IsOpen="{Binding IsMenuOpened, Mode=TwoWay}" Style="{DynamicResource PasswordKeeperFlyout}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="29*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Command="{Binding MenuButtonClick, Mode=OneWay}"
+                        Focusable="False"
+                        Style="{DynamicResource PasswordKeeperMenuButtonStyle}"
+                        ToolTip="{DynamicResource ToolTip.CloseMenu}">
+                        <iconPack:PackIconMaterial
+                            Width="30"
+                            Height="30"
+                            Kind="Menu" />
+                    </Button>
+
+                    <Button
+                        Grid.Row="2"
+                        Command="{Binding KeyChangeButtonClick, Mode=OneWay}"
+                        Focusable="False"
+                        Style="{DynamicResource PasswordKeeperMenuButtonStyle}"
+                        ToolTip="{DynamicResource ChangeKey}">
+                        <iconPack:PackIconMaterial
+                            Width="30"
+                            Height="30"
+                            Kind="KeyChange" />
+                    </Button>
+
+                    <Button
+                        Grid.Row="3"
+                        Command="{Binding SettingsButtonClick, Mode=OneWay}"
+                        Focusable="False"
+                        Style="{DynamicResource PasswordKeeperMenuButtonStyle}"
+                        ToolTip="{DynamicResource Settings}">
+                        <iconPack:PackIconModern
+                            Width="30"
+                            Height="30"
+                            Kind="Settings" />
+                    </Button>
+
+                    <Button
+                        Grid.Row="4"
+                        Command="{Binding LogOutButtonClick, Mode=OneWay}"
+                        Focusable="False"
+                        Style="{DynamicResource PasswordKeeperMenuButtonStyle}"
+                        ToolTip="{DynamicResource ToolTip.LogOut}">
+                        <iconPack:PackIconModern
+                            Width="30"
+                            Height="30"
+                            Kind="DoorLeave" />
+                    </Button>
+                </Grid>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="StateChanged">
+            <i:InvokeCommandAction Command="{Binding StateChangedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <ni:TaskbarIcon
+            DoubleClickCommand="{Binding OpenCommand, Mode=OneWay}"
+            IconSource="..\..\password.keeper.ico"
+            LeftClickCommand="{Binding OpenCommand, Mode=OneWay}"
+            NoLeftClickDelay="True"
+            ToolTipText="{DynamicResource Title}"
+            Visibility="Visible">
+            <ni:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{Binding OpenCommand, Mode=OneWay}" Header="{DynamicResource MenuItem.Open}" />
+                    <MenuItem
+                        Command="{Binding LogOutButtonClick, Mode=OneWay}"
+                        Header="{DynamicResource MenuItem.LogOut}"
+                        Visibility="{Binding User, Mode=OneWay, Converter={StaticResource converter}}" />
+                    <MenuItem Command="{Binding QuitCommand, Mode=OneWay}" Header="{DynamicResource MenuItem.Quit}" />
+                </ContextMenu>
+            </ni:TaskbarIcon.ContextMenu>
+        </ni:TaskbarIcon>
+
+        <ContentControl
+            Content="{Binding PrimaryViewModel}"
+            Focusable="True"
+            IsTabStop="False" />
+        <ContentControl
+            Content="{Binding SecondaryViewModel}"
+            Focusable="True"
+            IsTabStop="False" />
+    </Grid>
+</controls:MetroWindow>

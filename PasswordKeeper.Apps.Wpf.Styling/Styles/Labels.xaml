@@ -1,0 +1,58 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mah1="http://metro.mahapps.com/winfx/xaml/shared">
+
+    <Style x:Key="PasswordKeeperInputLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="Padding" Value="5,0,0,0" />
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+    </Style>
+
+    <Style
+        x:Key="PasswordKeeperErrorLabelStyle"
+        BasedOn="{StaticResource PasswordKeeperInputLabelStyle}"
+        TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="Red" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperContentLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="Padding" Value="10,0,0,0" />
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperHeaderLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="FontFamily" Value="{DynamicResource HeaderFontFamily}" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperHeaderTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource HeaderFontFamily}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperDialogTitleTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Background" Value="{DynamicResource WhiteBrush}" />
+        <Setter Property="FontSize" Value="{DynamicResource DialogTitleFontSize}" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+    <Style x:Key="PasswordKeeperDialogMessageTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Background" Value="{DynamicResource WhiteBrush}" />
+        <Setter Property="FontSize" Value="{DynamicResource DialogMessageFontSize}" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+</ResourceDictionary>

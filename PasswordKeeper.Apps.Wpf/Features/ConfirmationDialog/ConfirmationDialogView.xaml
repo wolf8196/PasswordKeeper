@@ -1,0 +1,85 @@
+﻿<UserControl
+    x:Class="PasswordKeeper.Apps.Wpf.Features.ConfirmationDialog.ConfirmationDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="489"
+    d:DesignWidth="292"
+    Focusable="True"
+    IsTabStop="False"
+    Loaded="ConfirmationDialogView_Loaded"
+    PreviewKeyDown="ConfirmationDialogView_PreviewKeyDown"
+    Style="{DynamicResource ViewFadeInStyle}"
+    mc:Ignorable="d">
+
+    <UserControl.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding OkButtonClick}" />
+        <KeyBinding Key="Esc" Command="{Binding CancelButtonClick}" />
+    </UserControl.InputBindings>
+
+    <Grid Background="#66000000">
+
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel Grid.ColumnSpan="2">
+                <TextBlock
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource PasswordKeeperDialogTitleTextBlock}"
+                    Text="{Binding Request.Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource PasswordKeeperDialogMessageTextBlock}"
+                    Text="{Binding Request.Message, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <Grid controls:VisibilityHelper.IsVisible="{Binding IsOkCancelMode, Mode=OneWay}" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    Height="45"
+                    Command="{Binding OkButtonClick}"
+                    IsTabStop="False"
+                    Style="{DynamicResource PasswordKeeperButtonStyle}"
+                    ToolTip="{DynamicResource ToolTip.Ok}">
+                    <Button.Content>
+                        <iconPack:PackIconMaterial Kind="Check" Style="{DynamicResource MaterialIconsLarge}" />
+                    </Button.Content>
+                </Button>
+
+                <Button
+                    Grid.Column="1"
+                    Height="45"
+                    Command="{Binding CancelButtonClick}"
+                    IsTabStop="False"
+                    Style="{DynamicResource PasswordKeeperButtonStyle}"
+                    ToolTip="{DynamicResource ToolTip.Cancel}">
+                    <Button.Content>
+                        <iconPack:PackIconMaterial Kind="Close" Style="{DynamicResource MaterialIconsLarge}" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid controls:VisibilityHelper.IsVisible="{Binding IsOkMode, Mode=OneWay}" Background="White">
+
+                <Button
+                    Grid.Column="0"
+                    Height="45"
+                    Command="{Binding OkButtonClick}"
+                    IsTabStop="False"
+                    Style="{DynamicResource PasswordKeeperButtonStyle}"
+                    ToolTip="{DynamicResource ToolTip.Ok}">
+                    <Button.Content>
+                        <iconPack:PackIconMaterial Kind="Check" Style="{DynamicResource MaterialIconsLarge}" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

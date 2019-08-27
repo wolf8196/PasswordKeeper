@@ -1,0 +1,79 @@
+﻿<Application
+    x:Class="PasswordKeeper.Apps.Wpf.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:accForm="clr-namespace:PasswordKeeper.Apps.Wpf.Features.AccountForm"
+    xmlns:accs="clr-namespace:PasswordKeeper.Apps.Wpf.Features.Accounts"
+    xmlns:att="clr-namespace:PasswordKeeper.Apps.Wpf.Features.Attachments"
+    xmlns:auth="clr-namespace:PasswordKeeper.Apps.Wpf.Features.Authentication"
+    xmlns:confirm="clr-namespace:PasswordKeeper.Apps.Wpf.Features.ConfirmationDialog"
+    xmlns:keyChange="clr-namespace:PasswordKeeper.Apps.Wpf.Features.KeyChange"
+    xmlns:loading="clr-namespace:PasswordKeeper.Apps.Wpf.Features.LoadingIndicator"
+    xmlns:pbkdf2="clr-namespace:PasswordKeeper.Apps.Wpf.Features.SecuritySettings.Kdfs.Pbkdf2"
+    xmlns:reg="clr-namespace:PasswordKeeper.Apps.Wpf.Features.Registration"
+    xmlns:secSett="clr-namespace:PasswordKeeper.Apps.Wpf.Features.SecuritySettings"
+    xmlns:sett="clr-namespace:PasswordKeeper.Apps.Wpf.Features.UserSettings">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.IconPacks;component/Themes/IconPacks.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Labels.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/TextBoxes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/CheckBoxes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/ComboBoxes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Others.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/CircleIconTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/BackButtonTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/ValidationPopupTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/NumericUpDown.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Resources/Strings.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type auth:AuthenticationViewModel}">
+                <auth:AuthenticationView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type keyChange:KeyChangeViewModel}">
+                <keyChange:KeyChangeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type reg:RegistrationViewModel}">
+                <reg:RegistrationView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type secSett:SecuritySettingsViewModel}">
+                <secSett:SecuritySettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type loading:LoadingIndicatorViewModel}">
+                <loading:LoadingIndicatorView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type accs:AccountsViewModel}">
+                <accs:AccountsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type accForm:AccountFormViewModel}">
+                <accForm:AccountFormView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type accForm:PasswordGenerationViewModel}">
+                <accForm:PasswordGenerationView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type sett:UserSettingsViewModel}">
+                <sett:UserSettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type confirm:ConfirmationDialogViewModel}">
+                <confirm:ConfirmationDialogView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type att:AttachmentsViewModel}">
+                <att:AttachmentsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type pbkdf2:Pbkdf2ViewModel}">
+                <pbkdf2:Pbkdf2View />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

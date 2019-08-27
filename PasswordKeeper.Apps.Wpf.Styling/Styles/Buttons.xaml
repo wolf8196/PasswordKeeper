@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style
+        x:Key="PasswordKeeperButtonStyle"
+        BasedOn="{StaticResource SquareButtonStyle}"
+        TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColorBrush3}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="PasswordKeeperMenuButtonStyle"
+        BasedOn="{StaticResource SquareButtonStyle}"
+        TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF026EC4" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#FF0363AF" />
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CircleIconButtonStyle" TargetType="Button">
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+    </Style>
+
+    <Style
+        x:Key="BackButtonStyle"
+        BasedOn="{StaticResource CircleIconButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+    </Style>
+</ResourceDictionary>
