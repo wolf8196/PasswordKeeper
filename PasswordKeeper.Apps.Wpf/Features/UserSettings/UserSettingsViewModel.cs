@@ -91,13 +91,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.UserSettings
 
             User.Settings = Settings;
 
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = true
-                });
-
             await Task.Run(() => userService.SaveAsync()).ConfigureAwait(false);
 
             if (Settings.StartWithWindows)
@@ -108,13 +101,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.UserSettings
             {
                 startupService.Disable();
             }
-
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = false
-                });
 
             messenger.Send(
                 this,

@@ -5,7 +5,6 @@
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mah1="http://metro.mahapps.com/winfx/xaml/shared">
 
-
     <ControlTemplate x:Key="NumericUpDownTemplate" TargetType="{x:Type mah:NumericUpDown}">
         <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Border

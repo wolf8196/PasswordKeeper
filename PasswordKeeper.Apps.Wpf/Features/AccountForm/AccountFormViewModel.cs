@@ -167,21 +167,7 @@ namespace PasswordKeeper.Apps.Wpf.Features.AccountForm
             User.RemoveAccount(account.Id);
             User.AddAccount(account);
 
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = true
-                });
-
             await Task.Run(() => userService.SaveAsync()).ConfigureAwait(false);
-
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = false
-                });
 
             messenger.Send(
                 this,

@@ -261,13 +261,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Attachments
                         Switcher = true
                     });
 
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = true
-                    });
-
                 await attachmentService.RemoveAsync(accountsState.SelectedAccount, SelectedAttachment).ConfigureAwait(false);
 
                 SelectedAttachment = null;
@@ -277,13 +270,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Attachments
                 messenger.Send(
                     this,
                     new SwitchLoadingIndicatorMessage
-                    {
-                        Switcher = false
-                    });
-
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
                     {
                         Switcher = false
                     });

@@ -370,21 +370,7 @@ namespace PasswordKeeper.Apps.Wpf.Features.Accounts
 
                 User.RemoveAccount(SelectedAccount);
 
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = true
-                    });
-
                 await userService.SaveAsync().ConfigureAwait(false);
-
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = false
-                    });
 
                 SelectedAccount = null;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Accounts)));

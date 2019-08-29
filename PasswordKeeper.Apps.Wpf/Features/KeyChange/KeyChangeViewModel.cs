@@ -116,21 +116,7 @@ namespace PasswordKeeper.Apps.Wpf.Features.KeyChange
                     Switcher = true
                 });
 
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = true
-                });
-
             await Task.Run(() => userService.ChangeKey(storageProvider, Password)).ConfigureAwait(false);
-
-            messenger.Send(
-                this,
-                new SwitchOffClosing
-                {
-                    Switcher = false
-                });
 
             messenger.Send(
                 this,

@@ -144,21 +144,7 @@ namespace PasswordKeeper.Apps.Wpf.Features.Registration
                         Switcher = true
                     });
 
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = true
-                    });
-
                 await Task.Run(() => userService.CreateAsync(storageProvider, Login, Password)).ConfigureAwait(false);
-
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = false
-                    });
 
                 messenger.Send(
                     this,

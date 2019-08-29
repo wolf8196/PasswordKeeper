@@ -29,7 +29,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Main
         private ViewModelBase secondaryViewModel;
         private bool isMenuOpened;
         private bool quit;
-        private bool forbidClose;
         private WindowState state;
 
         public MainViewModel(
@@ -138,7 +137,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Main
             messenger.Subscribe<SwitchViewMessage>(this, OnChangeView);
             messenger.Subscribe<SwitchLoadingIndicatorMessage>(this, OnShowLoadingIndicator);
             messenger.Subscribe<SwitchMenuMessage>(this, OnSwitchMenu);
-            messenger.Subscribe<SwitchOffClosing>(this, OnSwitchOffClosing);
             messenger.Subscribe<ConfirmDialogRequestMessage>(this, OnShowConfirmDialog);
             messenger.Subscribe<ConfirmDialogResponseMessage>(this, OnDialogResponseReceived);
         }
@@ -188,11 +186,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Main
         private void OnSwitchMenu(SwitchMenuMessage message)
         {
             IsMenuOpened = message.Switcher;
-        }
-
-        private void OnSwitchOffClosing(SwitchOffClosing message)
-        {
-            forbidClose = message.Switcher;
         }
 
         private void OnHideMenu(object obj)
@@ -246,8 +239,7 @@ namespace PasswordKeeper.Apps.Wpf.Features.Main
 
         private void OnClose(object obj)
         {
-            var args = obj as CancelEventArgs;
-            if (args == null)
+            if (!(obj is CancelEventArgs args))
             {
                 return;
             }
@@ -255,11 +247,6 @@ namespace PasswordKeeper.Apps.Wpf.Features.Main
             if (!quit && (User?.Settings.HideToTrayOnClose).GetValueOrDefault())
             {
                 windowStorage.GetWindow(this).Hide();
-                args.Cancel = true;
-            }
-
-            if (forbidClose)
-            {
                 args.Cancel = true;
             }
         }

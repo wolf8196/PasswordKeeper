@@ -73,25 +73,11 @@ namespace PasswordKeeper.Apps.Wpf.Services
                         Switcher = true
                     });
 
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = true
-                    });
-
                 while (attachmentsQueue.Count != 0)
                 {
                     await attachmentService.AddAsync(SelectedAccount, attachmentsQueue.Peek()).ConfigureAwait(false);
                     attachmentsQueue.Dequeue();
                 }
-
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = false
-                    });
 
                 messenger.Send(
                     this,
@@ -105,13 +91,6 @@ namespace PasswordKeeper.Apps.Wpf.Services
             catch (AttachmentExistsException)
             {
                 dialogId = Guid.NewGuid();
-
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = false
-                    });
 
                 messenger.Send(
                     this,
@@ -156,13 +135,6 @@ namespace PasswordKeeper.Apps.Wpf.Services
                         Switcher = true
                     });
 
-                messenger.Send(
-                    this,
-                    new SwitchOffClosing
-                    {
-                        Switcher = true
-                    });
-
                 try
                 {
                     await attachmentService.ReplaceAsync(SelectedAccount, attachmentsQueue.Peek()).ConfigureAwait(false);
@@ -170,13 +142,6 @@ namespace PasswordKeeper.Apps.Wpf.Services
                     attachmentsQueue.Dequeue();
 
                     await ProcessAddingQueue().ConfigureAwait(false);
-
-                    messenger.Send(
-                        this,
-                        new SwitchOffClosing
-                        {
-                            Switcher = false
-                        });
 
                     messenger.Send(
                         this,
@@ -188,13 +153,6 @@ namespace PasswordKeeper.Apps.Wpf.Services
                 catch (UnauthorizedAccessException)
                 {
                     NotifyUnauthorizedAccess();
-
-                    messenger.Send(
-                        this,
-                        new SwitchOffClosing
-                        {
-                            Switcher = false
-                        });
 
                     messenger.Send(
                         this,
