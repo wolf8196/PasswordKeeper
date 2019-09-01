@@ -52,6 +52,8 @@ namespace PasswordKeeper.Services
             {
                 lockFile.Dispose();
             }
+
+            locks.Remove(fileName);
         }
 
         public void Dispose()
