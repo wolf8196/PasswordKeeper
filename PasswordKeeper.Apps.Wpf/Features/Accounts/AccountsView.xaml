@@ -224,7 +224,6 @@
                 Grid.Row="7"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
-                Focusable="False"
                 IsTabStop="False"
                 Style="{DynamicResource PasswordKeeperReadOnlyNoteTextBoxStyle}"
                 Text="{Binding SelectedAccount.Notes, Mode=OneWay}" />
