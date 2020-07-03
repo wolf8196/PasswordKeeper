@@ -38,25 +38,26 @@ namespace PasswordKeeper.Security
                 // Write initialization vector
                 destination.Write(aes.IV, 0, aes.IV.Length);
 
-                using (var aesStream = new CryptoStream(destination, encryptor, CryptoStreamMode.Write, true))
+                // Do not dispose CryptoStream
+                // Because .Net Standard 2.0 does not allow to use leaveOpen parameter
+                var aesStream = new CryptoStream(destination, encryptor, CryptoStreamMode.Write);
+                
+                // Encrypt plaintext
+                await source.CopyToAsync(aesStream).ConfigureAwait(false);
+                aesStream.FlushFinalBlock();
+
+                var cipherTextLength = destination.Position - cipherTextStart;
+
+                // Calculate HMAC over ciphertext
+                using (var hmacStream = new CryptoStream(Stream.Null, hmac, CryptoStreamMode.Write))
                 {
-                    // Encrypt plaintext
-                    await source.CopyToAsync(aesStream).ConfigureAwait(false);
-                    aesStream.FlushFinalBlock();
+                    destination.Seek(cipherTextStart, SeekOrigin.Begin);
 
-                    var cipherTextLength = destination.Position - cipherTextStart;
+                    await destination.CopyToAsync(hmacStream, cipherTextLength).ConfigureAwait(false);
+                    hmacStream.FlushFinalBlock();
 
-                    // Calculate HMAC over ciphertext
-                    using (var hmacStream = new CryptoStream(Stream.Null, hmac, CryptoStreamMode.Write))
-                    {
-                        destination.Seek(cipherTextStart, SeekOrigin.Begin);
-
-                        await destination.CopyToAsync(hmacStream, cipherTextLength).ConfigureAwait(false);
-                        hmacStream.FlushFinalBlock();
-
-                        // Write authentication tag after ciphertext
-                        await destination.WriteAsync(hmac.Hash, 0, hmac.Hash.Length).ConfigureAwait(false);
-                    }
+                    // Write authentication tag after ciphertext
+                    await destination.WriteAsync(hmac.Hash, 0, hmac.Hash.Length).ConfigureAwait(false);
                 }
             }
         }
@@ -96,8 +97,11 @@ namespace PasswordKeeper.Security
             {
                 using (var aes = CreateAes())
                 using (var decryptor = aes.CreateDecryptor(encryptionKey, iv))
-                using (var aesStream = new CryptoStream(destination, decryptor, CryptoStreamMode.Write, true))
                 {
+                    // Do not dispose CryptoStream
+                    // Because .Net Standard 2.0 does not allow to use leaveOpen parameter
+                    var aesStream = new CryptoStream(destination, decryptor, CryptoStreamMode.Write);
+
                     // Decrypt ciphertext
                     await source.CopyToAsync(aesStream, source.Length - BlockSize - MacSize).ConfigureAwait(false);
                     aesStream.FlushFinalBlock();

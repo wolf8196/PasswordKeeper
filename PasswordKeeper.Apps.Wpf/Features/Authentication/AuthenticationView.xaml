@@ -43,7 +43,7 @@
             Text="{StaticResource Authentication}">
             <comp:Header.Icon>
                 <iconPack:PackIconModern
-                    Foreground="{DynamicResource AccentColorBrush}"
+                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
                     Kind="Lock"
                     Style="{DynamicResource ModernIconsSmall}" />
             </comp:Header.Icon>
@@ -73,7 +73,7 @@
             Grid.Row="5"
             Grid.ColumnSpan="3"
             helpers:PasswordBindingHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
-            Style="{DynamicResource PasswordKeeperRevealButtonPasswordBox}"
+            Style="{DynamicResource PasswordKeeperPasswordBoxStyle}"
             TabIndex="1" />
 
         <Button

@@ -4,10 +4,14 @@
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
     <Style
         x:Key="PasswordKeeperCheckBoxStyle"
-        BasedOn="{StaticResource MetroCheckBox}"
-        TargetType="CheckBox">
-        <Setter Property="mah:ControlsHelper.FocusBorderBrush" Value="{DynamicResource AccentBaseColorBrush}" />
-        <Setter Property="mah:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        BasedOn="{StaticResource MahApps.Styles.CheckBox}"
+        TargetType="{x:Type CheckBox}">
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeCheckedMouseOver" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeIndeterminateMouseOver" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeUncheckedMouseOver" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeCheckedPressed" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeIndeterminatePressed" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+        <Setter Property="mah:CheckBoxHelper.CheckBackgroundStrokeUncheckedPressed" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
         <Setter Property="Height" Value="18" />
         <Setter Property="Width" Value="18" />
     </Style>

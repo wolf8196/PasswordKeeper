@@ -1,10 +1,16 @@
 ﻿using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Digests;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Parameters;
 using PasswordKeeper.Utils;
 
 namespace PasswordKeeper.Security
 {
     public sealed partial class Pbkdf2Sha512 : IKeyDerivationFunction
     {
+        public const int DefaultSaltSize = 8;
+        public const int DefaultIterations = 500000;
+
         private byte[] salt;
         private int iterations;
 
@@ -40,10 +46,12 @@ namespace PasswordKeeper.Security
             key.ThrowIfNull(nameof(key));
             keySize.ThrowIfDefault(nameof(keySize));
 
-            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(key, salt, iterations, HashAlgorithmName.SHA512))
-            {
-                return bytes.GetBytes(keySize);
-            }
+            // Changed to BouncyCastle's implementation of PBKDF2
+            // Because .Net Standard 2.0 does not allow to use SHA512
+            var generator = new Pkcs5S2ParametersGenerator(new Sha512Digest());
+            generator.Init(key, salt, iterations);
+            var keyParameter = (KeyParameter)generator.GenerateDerivedMacParameters(keySize * 8);
+            return keyParameter.GetKey();
         }
 
         public ISerializer GetSerializer()

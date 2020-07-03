@@ -6,7 +6,7 @@
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="clr-namespace:PasswordKeeper.Apps.Wpf.Styling.Helpers;assembly=PasswordKeeper.Apps.Wpf.Styling"
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="540"
@@ -46,7 +46,7 @@
                 Height="25"
                 Margin="10,0"
                 helpers:ButtonTextBoxHelper.IsButtonEnabled="False"
-                Style="{DynamicResource ButtonTextBoxStyle}"
+                Style="{DynamicResource PasswordKeeperButtonTextBoxStyle}"
                 TabIndex="0"
                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <TextBox.InputBindings>

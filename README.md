@@ -5,7 +5,7 @@ The app is strictly offline. No network communication whatsoever.
 That is why transfering of the database file is up to the user. Choose whatever method, you trust the most.
 
 ## Prerequisites
-.NET Framework 4.7.2
+.NET Core 3.1
 
 ## Security
 Currently only one encryption algorithm and one key derivation function is supported, but more may be added in future.
@@ -25,8 +25,6 @@ If you noticed a bug, issue, vulnerability or have good suggestions, please feel
 
 ## Acknowledgments
 Many thanks to the creators of [MahApps.Metro](https://mahapps.com/). Nothing from the current user interface would have been possible without their toolkit.
-
-Also, thank you to [Advanced Installer](https://www.advancedinstaller.com/) team, who provided a free license to use their awesome product for this project.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/wolf8196/PasswordKeeper/blob/master/LICENSE) file for details.

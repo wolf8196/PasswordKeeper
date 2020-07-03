@@ -2,24 +2,26 @@
 
     <Style
         x:Key="PasswordKeeperButtonStyle"
-        BasedOn="{StaticResource SquareButtonStyle}"
+        BasedOn="{StaticResource MahApps.Styles.Button.Square}"
         TargetType="{x:Type Button}">
         <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource AccentColorBrush3}" />
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent3}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style
         x:Key="PasswordKeeperMenuButtonStyle"
-        BasedOn="{StaticResource SquareButtonStyle}"
+        BasedOn="{StaticResource MahApps.Styles.Button.Square}"
         TargetType="{x:Type Button}">
         <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#FF026EC4" />
@@ -31,18 +33,18 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="CircleIconButtonStyle" TargetType="Button">
+    <Style x:Key="CircleIconButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="Height" Value="60" />
         <Setter Property="Width" Value="60" />
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
     </Style>
 
     <Style
         x:Key="BackButtonStyle"
         BasedOn="{StaticResource CircleIconButtonStyle}"
-        TargetType="Button">
+        TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
     </Style>
 </ResourceDictionary>

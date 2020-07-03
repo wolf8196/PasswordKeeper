@@ -28,7 +28,7 @@
         <iconPack:PackIconMaterial
             Grid.Row="2"
             HorizontalAlignment="Center"
-            Foreground="{DynamicResource AccentColorBrush}"
+            Foreground="{DynamicResource MahApps.Brushes.Accent}"
             Kind="Upload"
             Opacity="0.5"
             Style="{DynamicResource MaterialIconsLarge}" />

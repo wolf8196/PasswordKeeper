@@ -9,16 +9,16 @@
         x:Key="PasswordKeeperComboBoxStyle"
         BasedOn="{StaticResource {x:Type ComboBox}}"
         TargetType="{x:Type ComboBox}">
-        <Setter Property="mah:ControlsHelper.FocusBorderBrush" Value="{DynamicResource AccentBaseColorBrush}" />
-        <Setter Property="mah:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="mah:ControlsHelper.FocusBorderBrush" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+        <Setter Property="mah:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
         <Style.Resources>
             <c:BrushToColorConverter x:Key="colorConverter" />
-            <b:BindingProxy x:Key="AccentColorBrush3Proxy" Data="{DynamicResource AccentColorBrush3}" />
-            <b:BindingProxy x:Key="AccentColorBrush4Proxy" Data="{DynamicResource AccentColorBrush4}" />
-            <SolidColorBrush x:Key="GrayBrush3" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
-            <SolidColorBrush x:Key="GrayBrush5" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
-            <SolidColorBrush x:Key="GrayBrush7" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
-            <SolidColorBrush x:Key="GrayBrush9" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <b:BindingProxy x:Key="AccentColorBrush3Proxy" Data="{DynamicResource MahApps.Brushes.Accent3}" />
+            <b:BindingProxy x:Key="AccentColorBrush4Proxy" Data="{DynamicResource MahApps.Brushes.Accent4}" />
+            <SolidColorBrush x:Key="MahApps.Brushes.Gray3" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="MahApps.Brushes.Gray5" Color="{Binding Source={StaticResource AccentColorBrush3Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="MahApps.Brushes.Gray7" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
+            <SolidColorBrush x:Key="MahApps.Brushes.Gray9" Color="{Binding Source={StaticResource AccentColorBrush4Proxy}, Path=Data, Converter={StaticResource colorConverter}}" />
         </Style.Resources>
     </Style>
 </ResourceDictionary>

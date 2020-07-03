@@ -22,7 +22,7 @@
         ToolTip="{DynamicResource ToolTip.GoBack}">
         <Button.Content>
             <iconPack:PackIconMaterial
-                Foreground="{DynamicResource AccentColorBrush}"
+                Foreground="{DynamicResource MahApps.Brushes.Accent}"
                 Kind="ArrowLeft"
                 Style="{DynamicResource MaterialIconsSmall}" />
         </Button.Content>

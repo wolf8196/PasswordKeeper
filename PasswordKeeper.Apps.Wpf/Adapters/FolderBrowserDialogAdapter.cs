@@ -7,7 +7,7 @@ namespace PasswordKeeper.Apps.Wpf.Adapters
     {
         public string ShowDialog()
         {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
+            using (var dialog = new FolderBrowserDialog())
             {
                 return dialog.ShowDialog() == DialogResult.OK ? dialog.SelectedPath : null;
             }

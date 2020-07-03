@@ -383,6 +383,3 @@ ASALocalRun/
 healthchecksdb
 
 # End of https://www.gitignore.io/api/windows,visualstudio,visualstudiocode
-/PasswordKeeper.Setup.Wpf/PasswordKeeper.Setup.Wpf-SetupFiles
-/PasswordKeeper.Setup.Wpf/PasswordKeeper.Setup.Wpf-cache
-/PasswordKeeper.Setup.Wpf/Prerequisites/.NET Framework 4.7.2

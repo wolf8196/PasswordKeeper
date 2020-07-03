@@ -1,20 +1,15 @@
 ﻿using System.Windows;
-using System.Windows.Interactivity;
+using Microsoft.Xaml.Behaviors;
 
 namespace PasswordKeeper.Apps.Wpf.Styling.Helpers
 {
     public class TopmostBindingHelper : Behavior<Window>
     {
-        public static readonly DependencyProperty ValueProperty;
-
-        static TopmostBindingHelper()
-        {
-            ValueProperty = DependencyProperty.RegisterAttached(
-                nameof(Value),
-                typeof(bool),
-                typeof(TopmostBindingHelper),
-                new PropertyMetadata(false, OnValueChanged));
-        }
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
+            nameof(Value),
+            typeof(bool),
+            typeof(TopmostBindingHelper),
+            new PropertyMetadata(false, OnValueChanged));
 
         public bool Value
         {

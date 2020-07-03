@@ -28,9 +28,9 @@
 
         <mah:NumericUpDown
             Grid.Column="1"
+            mah:UpDownButtonsWidth="30"
             Style="{DynamicResource PasswordKeeperNumericUpDown}"
             TabIndex="0"
-            Template="{DynamicResource NumericUpDownTemplate}"
             Value="{Binding Iterations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </UserControl>

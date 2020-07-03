@@ -100,9 +100,8 @@
             Grid.Row="6"
             Grid.ColumnSpan="2"
             controls:TextBoxHelper.ButtonCommand="{Binding GenerateButtonClick, Mode=OneWay, ValidatesOnNotifyDataErrors=False}"
-            controls:TextBoxHelper.ButtonWidth="30"
             helpers:ButtonTextBoxHelper.IsButtonEnabled="True"
-            Style="{DynamicResource ButtonTextBoxStyle}"
+            Style="{DynamicResource PasswordKeeperButtonTextBoxStyle}"
             TabIndex="2"
             Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
             ToolTip="{DynamicResource ToolTip.PasswordGeneration}">

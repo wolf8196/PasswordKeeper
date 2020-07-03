@@ -18,9 +18,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Cyan.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.IconPacks;component/Themes/IconPacks.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Buttons.xaml" />
@@ -32,8 +30,9 @@
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Styles/Others.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/CircleIconTemplate.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/BackButtonTemplate.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/ValidationPopupTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/PasswordBoxTemplate.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/NumericUpDown.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Templates/ButtonTextBoxTemplate.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Resources/Strings.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/PasswordKeeper.Apps.Wpf.Styling;component/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
