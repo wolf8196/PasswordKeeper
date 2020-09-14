@@ -58,7 +58,7 @@
         x:Key="PasswordKeeperReadOnlyNoteTextBoxStyle"
         BasedOn="{StaticResource {x:Type TextBox}}"
         TargetType="{x:Type TextBox}">
-        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+        <Setter Property="FontSize" Value="{DynamicResource MahApps.Font.Size.Default}" />
         <Setter Property="Padding" Value="4,0,0,0" />
         <Setter Property="IsReadOnly" Value="True" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
